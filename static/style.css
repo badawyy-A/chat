@@ -1,0 +1,146 @@
+body {
+    background: linear-gradient(to bottom right, #493240, #FF0099);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    
+}
+
+
+
+.chat-container {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #ab47bc;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header .status {
+    display: flex;
+    align-items: center;
+}
+
+.header .status span {
+    margin-left: 5px;
+    color: lightgreen;
+}
+
+.chat-box {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+}
+
+.message.bot {
+    align-self: flex-start;
+}
+
+.message.user {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message .content {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message.bot .content {
+    background: #e0e0e0;
+    border-radius: 10px 10px 10px 0;
+    color: black;
+}
+
+.message.user .content {
+    background: #ab47bc;
+    border-radius: 10px 10px 0 10px;
+    color: white;
+}
+
+.input-box {
+    display: flex;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.input-box button {
+    background: #ab47bc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-box button:hover {
+    background: #9c27b0;
+}
+
+a {
+    color: #3f51b5;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #303f9f;
+}
+
+.header button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.header button:hover {
+    color: #e0e0e0;
+}

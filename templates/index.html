@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .chat-container {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: #ab47bc;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+        }
+        .status span {
+            margin-left: 5px;
+            color: lightgreen;
+        }
+        .chat-box {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            display: flex;
+            flex-direction: column;
+            max-width: 80%;
+            width: fit-content;
+            align-self: flex-start;
+        }
+        .message.user {
+            align-self: flex-end;
+        }
+        .message .content {
+            background: #e0e0e0;
+            border-radius: 10px 10px 10px 0;
+            color: black;
+            padding: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            white-space: pre-wrap; /* Allows text to wrap */
+            overflow: hidden;
+            max-width: 100%; /* Ensures it does not exceed the parent container */
+            position: relative;
+        }
+        .message.user .content {
+            background: #ab47bc;
+            color: white;
+            border-radius: 10px 10px 0 10px;
+        }
+        .typing-effect {
+            display: inline;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: 2px solid;
+            animation: typing 2s steps(30, end) 1s 1 normal both, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header><h1 style="color: white; margin-bottom: 60px;">Electricity Egypt Company  Chatbot</h1></header>
+    <div class="chat-container">
+        <div class="header">
+            <div class="title">ChatBot</div>
+            <div class="status">
+                <span>online</span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="chat-box" id="chat-box">
+            {% for message in messages %}
+                <div class="message {{ message.role }}">
+                    <div class="content">
+                        <span class="typing-effect">{{ message.content|safe }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="POST" class="input-box">
+            <input type="text" name="user_input" placeholder="Ask your question..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        function logout() {
+            // Handle logout functionality if needed
+        }
+
+        // Scroll chat to bottom
+        window.onload = function() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+    </script>
+</body>
+</html>
